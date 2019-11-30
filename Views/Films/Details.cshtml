@@ -1,0 +1,72 @@
+﻿@model FilmsCatalog.Models.Film
+
+@{
+    ViewBag.Title = "Детали";
+}
+
+<div class="jumbotron">
+    <div>
+        <div class="raw">
+            <div class="col-sm-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Title)
+                    </dd>
+
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Year)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Year)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Director)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Director)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.user)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.user)
+                    </dd>
+                </dl>
+                    <b>@Html.DisplayNameFor(model => model.Description)</b>
+                    @Html.DisplayFor(model => model.Description)
+
+            </div>
+            <div class="col-sm-8">
+                @{
+                    if (Model.Poster != null)
+                    {
+                        <div class="display-label">
+                            <img src="~/Content/Images/@Url.Content(Model.Poster)" alt="Poster" class="img-responsive" />
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+    </div>
+
+    <p>
+        @{ if (@ViewBag.currentUser == Model.user)
+            {
+                @Html.ActionLink("Edit ", "Edit", new { id = Model.Id })
+            }
+        }
+        @Html.ActionLink("Назад", "Index")
+    </p>
+</div>
